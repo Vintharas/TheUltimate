@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E6DCB87A-4B98-44FD-A915-2FFD511D89C4}</ProjectGuid>
+    <ProjectGuid>{D635730B-1B86-4FA8-BE51-91E1B02BAAEF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TheUltimate.Storage</RootNamespace>
-    <AssemblyName>TheUltimate.Storage</AssemblyName>
+    <RootNamespace>TheUltimate.UnitTests</RootNamespace>
+    <AssemblyName>TheUltimate.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,15 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context.cs" />
-    <Compile Include="IContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TheUltimate.Domain\TheUltimate.Domain.csproj">
-      <Project>{ffc05694-0434-43cf-b0f2-6c0deae902de}</Project>
-      <Name>TheUltimate.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
