@@ -48,6 +48,10 @@
       <Project>{ffc05694-0434-43cf-b0f2-6c0deae902de}</Project>
       <Name>TheUltimate.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TheUltimate.Storage\TheUltimate.Storage.csproj">
+      <Project>{e6dcb87a-4b98-44fd-a915-2ffd511d89c4}</Project>
+      <Name>TheUltimate.Storage</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

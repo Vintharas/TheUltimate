@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.1.12217, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.2.6.1\lib\nunit.framework.dll</HintPath>
@@ -45,6 +48,23 @@
   <ItemGroup>
     <Compile Include="Concretes\TaskHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TheUltimate.Domain\TheUltimate.Domain.csproj">
+      <Project>{ffc05694-0434-43cf-b0f2-6c0deae902de}</Project>
+      <Name>TheUltimate.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheUltimate.Services\TheUltimate.Services.csproj">
+      <Project>{11A74EFD-AEC8-4CBA-AB90-A9BBC522D9A9}</Project>
+      <Name>TheUltimate.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheUltimate.Storage\TheUltimate.Storage.csproj">
+      <Project>{E6DCB87A-4B98-44FD-A915-2FFD511D89C4}</Project>
+      <Name>TheUltimate.Storage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

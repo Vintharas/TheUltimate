@@ -1,0 +1,82 @@
+﻿@model IEnumerable<TheUltimate.Domain.Model.Task>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section ExtraStyles {
+    @Styles.Render("~/Content/themes/base/css/jqueryconsole")
+}
+
+<h2>Tasks</h2>
+
+<!--p>
+    @Html.ActionLink("Create New", "Create")
+</p-->
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+@section Scripts {
+    <script type="text/javascript">
+      $(document).ready(function(){
+         /* First console */
+         var console1 = $('<div class="console1">');
+         $('body').append(console1);
+         var controller1 = console1.console({
+           promptLabel: 'Barbarian-Meets-Coding>> ',
+           commandValidate:function(line){
+             if (line == "") return false;
+             else return true;
+           },
+           commandHandle:function(line){
+               return [{msg:"=> [12,42]",
+                        className:"jquery-console-message-value"},
+                       {msg:":: [a]",
+                        className:"jquery-console-message-type"}]
+           },
+           autofocus:true,
+           animateScroll:true,
+           promptHistory:true,
+           charInsertTrigger:function(keycode,line){
+              // Let you type until you press a-z
+              // Never allow zero.
+              return !line.match(/[a-z]+/) && keycode != '0'.charCodeAt(0);
+           }
+         });
+      });
+    </script>
+    @Scripts.Render("~/bundles/jqueryconsole")
+}
