@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TheUltimate.Models;
 using TheUltimate.Services.Interfaces;
 
 namespace TheUltimate.Controllers
 {
-    public class TaskController : Controller
+    public class TasksController : Controller
     {
         private ITaskHandler taskHandler;
 
-        public TaskController(ITaskHandler taskHandler)
+        public TasksController(ITaskHandler taskHandler)
         {
             this.taskHandler = taskHandler;
         }
@@ -109,6 +110,18 @@ namespace TheUltimate.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpGet]
+        public ActionResult ParseCommand()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost]
+        public ActionResult ParseCommand(IDictionary<string, object> command)
+        {
+            throw new NotImplementedException();
         }
     }
 }

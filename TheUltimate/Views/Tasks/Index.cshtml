@@ -13,7 +13,7 @@
 <!--p>
     @Html.ActionLink("Create New", "Create")
 </p-->
-<table>
+<table id="tasks-table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Number)
@@ -38,11 +38,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+        @{/*<td>
+          @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+          @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+          @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>*/
+         }
     </tr>
 }
 
@@ -59,7 +60,13 @@
            promptLabel: '>> ',
            commandValidate:function(line){
              if (line == "") return false;
-             else return true;
+             else $.ajax({
+                 url: "/Tasks/ParseCommand",
+                 type: "POST",
+                 //beforeSend: function () { alert("lala!"); },
+                 dataType: "json",
+                 //contentType: 'application/json; charset=utf-8',
+                 data: {command: line}});
            },
            commandHandle: function (line) {
                return [{ msg: line, className: "jquery-console-message-value" }];
@@ -82,4 +89,6 @@
       });
     </script>
     @Scripts.Render("~/bundles/jqueryconsole")
+    @Scripts.Render("~/bundles/jqueryval")
+    
 }
