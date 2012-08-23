@@ -112,16 +112,11 @@ namespace TheUltimate.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult ParseCommand()
-        {
-            throw new NotImplementedException();
-        }
-
         [HttpPost]
-        public ActionResult ParseCommand(IDictionary<string, object> command)
+        public JsonResult ParseCommand(Command command)
         {
-            throw new NotImplementedException();
+
+            return Json(new {Response = "You're Awesome"});
         }
     }
 }

@@ -59,17 +59,21 @@
          var controller1 = console1.console({
            promptLabel: '>> ',
            commandValidate:function(line){
-             if (line == "") return false;
-             else $.ajax({
-                 url: "/Tasks/ParseCommand",
-                 type: "POST",
-                 //beforeSend: function () { alert("lala!"); },
-                 dataType: "json",
-                 //contentType: 'application/json; charset=utf-8',
-                 data: {command: line}});
+               if (line == "") return false;
+               else return true;
            },
            commandHandle: function (line) {
-               return [{ msg: line, className: "jquery-console-message-value" }];
+               var response = "";
+               $.ajax({
+                   url: "@Url.Action("ParseCommand")",
+                                      type: "POST",
+                                      dataType: "json",
+                                      data: JSON.stringify({ Line: line }),
+                                      contentType: "application/json; charset=utf-8",
+
+               }).done(function (data) { response = data.Response; });
+               
+               return [{ msg: response, className: "jquery-console-message-value" }];
                
                /*return [{msg:"=> [12,42]",
                         className:"jquery-console-message-value"},
