@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using Moq;
 using NUnit.Framework;
 using TheUltimate.Domain.Model;
@@ -29,6 +30,31 @@ namespace TheUltimate.Services.UnitTests.Concretes
             var actualTasks = taskHandler.GetTasks();
             // Assert
             Assert.AreEqual(expectedTasks, actualTasks);
+        }
+
+        [Test]
+        public void CreateNewTask_ShouldCreateANewTaskAndAddItToTheContext()
+        {
+            // Arrange
+            var taskHandler = GetTaskHandler();
+            var tasksInContext = new List<Task>();
+            context.Setup(c => c.Tasks).Returns(tasksInContext);
+            // Act
+            var task = taskHandler.CreateNewTask();
+            // Assert
+            Assert.Contains(expected: task, actual: tasksInContext);
+        }
+        
+        [Test]
+        public void SaveTask_WhenGivenATask_ShouldSaveItViaContext()
+        {
+            // Arrange
+            var task = new Task();
+            var taskHandler = GetTaskHandler();
+            // Act
+            taskHandler.SaveTasks();
+            // Assert
+            context.Verify(x => x.SaveContext());
         }
 
         private TaskHandler GetTaskHandler()

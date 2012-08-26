@@ -61,10 +61,11 @@ namespace TheUltimate.App_Start
         private static void RegisterServices(IKernel kernel)
         {
 
-            kernel.Bind<IContext>().To<Context>();
-            kernel.Bind<ITaskHandler>().To<TaskHandler>();
-            kernel.Bind<IParser>().To<CommandParser>();
-            kernel.Bind<IInterpreter>().To<CommandInterpreter>();
+            kernel.Bind<IContext>().To<Context>().InRequestScope();
+            kernel.Bind<ITaskHandler>().To<TaskHandler>().InRequestScope();
+            kernel.Bind<IParser>().To<CommandParser>().InRequestScope();
+            kernel.Bind<IInterpreter>().To<CommandInterpreter>().InRequestScope();
+            kernel.Bind<ICommandExecuter>().To<CommandExecuter>().InRequestScope();
         }        
     }
 }

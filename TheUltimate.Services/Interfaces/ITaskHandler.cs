@@ -7,6 +7,7 @@ namespace TheUltimate.Services.Interfaces
     {
         IEnumerable<Task> GetTasks();
         Task CreateNewTask();
+        void SaveTasks();
         void CompleteTask(Task task);
     }
 }

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concretes\CommandExecuterUnitTests.cs" />
     <Compile Include="Concretes\CommandInterpreterUnitTests.cs" />
     <Compile Include="Concretes\CommandParserUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,9 +56,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TheUltimate.Domain\TheUltimate.Domain.csproj">
+      <Project>{FFC05694-0434-43CF-B0F2-6C0DEAE902DE}</Project>
+      <Name>TheUltimate.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TheUltimate.Parser\TheUltimate.Interpreter.csproj">
       <Project>{F0F5A0C6-516B-4FB3-84AA-C906408C8475}</Project>
       <Name>TheUltimate.Interpreter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheUltimate.Services\TheUltimate.Services.csproj">
+      <Project>{11A74EFD-AEC8-4CBA-AB90-A9BBC522D9A9}</Project>
+      <Name>TheUltimate.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

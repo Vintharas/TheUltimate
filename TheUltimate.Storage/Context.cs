@@ -5,8 +5,13 @@ namespace TheUltimate.Storage
 {
     public class Context : IContext
     {
-        public IEnumerable<Tag> Tags { get; private set; }
-        public IEnumerable<Task> Tasks { get; private set; }
+        public IList<Tag> Tags { get; private set; }
+        public IList<Task> Tasks { get; private set; }
+        
+        public void SaveContext()
+        {
+            // Save changes XD   
+        }
 
         public Context()
         {

@@ -5,7 +5,8 @@ namespace TheUltimate.Storage
 {
     public interface IContext
     {
-        IEnumerable<Tag> Tags { get; }
-        IEnumerable<Task> Tasks { get; } 
+        IList<Tag> Tags { get; }
+        IList<Task> Tasks { get; }
+        void SaveContext();
     }
 }

@@ -18,7 +18,8 @@ namespace TheUltimate.Interpreter.Concretes
                         Line = line,
                         Verb = verb.Name,
                         Argument = ExtractArgument(line, verb),
-                        Response = verb.Response
+                        Response = verb.Response,
+                        IsValid = true
                     };
             }
             return new Command {Response = "Couldn't parse that command! I'm sorry :("};

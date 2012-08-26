@@ -22,7 +22,8 @@ namespace TheUltimate.Interpreter.UnitTests.Concretes
                     Line = line,
                     Verb = "create new task",
                     Argument = "do the dishes",
-                    Response = "new task created!"
+                    Response = "new task created!",
+                    IsValid = true
                 };
             Assert.AreEqual(expected: expectedCommand, actual: command);
         }

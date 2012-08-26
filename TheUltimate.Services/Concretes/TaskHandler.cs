@@ -21,7 +21,15 @@ namespace TheUltimate.Services.Concretes
 
         public Task CreateNewTask()
         {
-            throw new System.NotImplementedException();
+            //TO DO: need to add identifier to task
+            Task task = new Task();
+            context.Tasks.Add(task);
+            return task;
+        }
+
+        public void SaveTasks()
+        {
+            context.SaveContext();
         }
 
         public void CompleteTask(Task task)

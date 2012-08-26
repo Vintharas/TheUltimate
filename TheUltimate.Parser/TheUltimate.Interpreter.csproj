@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concretes\CommandExecuter.cs" />
     <Compile Include="Concretes\CommandInterpreter.cs" />
     <Compile Include="Concretes\CommandParser.cs" />
     <Compile Include="Concretes\VerbManager.cs" />
+    <Compile Include="Interfaces\ICommandExecuter.cs" />
     <Compile Include="Interfaces\IInterpreter.cs" />
     <Compile Include="Interfaces\IParser.cs" />
     <Compile Include="Model\Argument.cs" />
@@ -50,7 +52,16 @@
     <Compile Include="Model\Verb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TheUltimate.Domain\TheUltimate.Domain.csproj">
+      <Project>{ffc05694-0434-43cf-b0f2-6c0deae902de}</Project>
+      <Name>TheUltimate.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheUltimate.Services\TheUltimate.Services.csproj">
+      <Project>{11A74EFD-AEC8-4CBA-AB90-A9BBC522D9A9}</Project>
+      <Name>TheUltimate.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
