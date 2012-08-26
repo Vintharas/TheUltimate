@@ -55,11 +55,11 @@
       <Name>TheUltimate.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\TheUltimate.Services\TheUltimate.Services.csproj">
-      <Project>{11A74EFD-AEC8-4CBA-AB90-A9BBC522D9A9}</Project>
+      <Project>{11a74efd-aec8-4cba-ab90-a9bbc522d9a9}</Project>
       <Name>TheUltimate.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\TheUltimate.Storage\TheUltimate.Storage.csproj">
-      <Project>{E6DCB87A-4B98-44FD-A915-2FFD511D89C4}</Project>
+      <Project>{e6dcb87a-4b98-44fd-a915-2ffd511d89c4}</Project>
       <Name>TheUltimate.Storage</Name>
     </ProjectReference>
   </ItemGroup>

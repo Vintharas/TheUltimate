@@ -1,4 +1,6 @@
 
+using TheUltimate.Interpreter.Concretes;
+using TheUltimate.Interpreter.Interfaces;
 using TheUltimate.Services.Concretes;
 using TheUltimate.Services.Interfaces;
 using TheUltimate.Storage;
@@ -58,8 +60,11 @@ namespace TheUltimate.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+
             kernel.Bind<IContext>().To<Context>();
             kernel.Bind<ITaskHandler>().To<TaskHandler>();
+            kernel.Bind<IParser>().To<CommandParser>();
+            kernel.Bind<IInterpreter>().To<CommandInterpreter>();
         }        
     }
 }

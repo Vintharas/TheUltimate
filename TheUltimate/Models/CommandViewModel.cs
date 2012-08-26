@@ -1,6 +1,6 @@
 namespace TheUltimate.Models
 {
-    public class Command
+    public class CommandViewModel
     {
         public string Line { get; set; }
     }

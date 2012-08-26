@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TheUltimate.Interpreter.Interfaces;
+using TheUltimate.Interpreter.Model;
 using TheUltimate.Models;
 using TheUltimate.Services.Interfaces;
 
@@ -10,17 +12,19 @@ namespace TheUltimate.Controllers
 {
     public class TasksController : Controller
     {
-        private ITaskHandler taskHandler;
+        private readonly ITaskHandler taskHandler;
+        private readonly IInterpreter interpreter;
 
-        public TasksController(ITaskHandler taskHandler)
+        public TasksController(ITaskHandler taskHandler, IInterpreter interpreter)
         {
             this.taskHandler = taskHandler;
+            this.interpreter = interpreter;
         }
 
         //
         // GET: /Task/
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
             var userTasks = taskHandler.GetTasks();
             return View(userTasks);
@@ -113,10 +117,10 @@ namespace TheUltimate.Controllers
         }
 
         [HttpPost]
-        public JsonResult ParseCommand(Command command)
+        public JsonResult InterpretCommand(CommandViewModel command)
         {
-
-            return Json(new {Response = "You're Awesome"});
+            Command resultCommand = interpreter.Interpret(command.Line);
+            return Json(resultCommand);
         }
     }
 }

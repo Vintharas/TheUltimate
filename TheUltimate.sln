@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheUltimate.Web.UnitTests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheUltimate.Domain", "TheUltimate.Domain\TheUltimate.Domain.csproj", "{FFC05694-0434-43CF-B0F2-6C0DEAE902DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheUltimate.Interpreter", "TheUltimate.Parser\TheUltimate.Interpreter.csproj", "{F0F5A0C6-516B-4FB3-84AA-C906408C8475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheUltimate.Interpreter.UnitTests", "TheUltimate.Parser.UnitTests\TheUltimate.Interpreter.UnitTests.csproj", "{AA407288-3B3E-4997-85B7-38CEA7E510A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,14 @@ Global
 		{FFC05694-0434-43CF-B0F2-6C0DEAE902DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFC05694-0434-43CF-B0F2-6C0DEAE902DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFC05694-0434-43CF-B0F2-6C0DEAE902DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0F5A0C6-516B-4FB3-84AA-C906408C8475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0F5A0C6-516B-4FB3-84AA-C906408C8475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0F5A0C6-516B-4FB3-84AA-C906408C8475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0F5A0C6-516B-4FB3-84AA-C906408C8475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA407288-3B3E-4997-85B7-38CEA7E510A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA407288-3B3E-4997-85B7-38CEA7E510A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA407288-3B3E-4997-85B7-38CEA7E510A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA407288-3B3E-4997-85B7-38CEA7E510A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

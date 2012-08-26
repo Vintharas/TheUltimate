@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D635730B-1B86-4FA8-BE51-91E1B02BAAEF}</ProjectGuid>
+    <ProjectGuid>{F0F5A0C6-516B-4FB3-84AA-C906408C8475}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TheUltimate.UnitTests</RootNamespace>
-    <AssemblyName>TheUltimate.UnitTests</AssemblyName>
+    <RootNamespace>TheUltimate.Interpreter</RootNamespace>
+    <AssemblyName>TheUltimate.Interpreter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,16 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.1.12217, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.6.1\lib\nunit.framework.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,30 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\TasksControllerUnitTests.cs" />
+    <Compile Include="Concretes\CommandInterpreter.cs" />
+    <Compile Include="Concretes\CommandParser.cs" />
+    <Compile Include="Concretes\VerbManager.cs" />
+    <Compile Include="Interfaces\IInterpreter.cs" />
+    <Compile Include="Interfaces\IParser.cs" />
+    <Compile Include="Model\Argument.cs" />
+    <Compile Include="Model\Command.cs" />
+    <Compile Include="Model\Verb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TheUltimate.Domain\TheUltimate.Domain.csproj">
-      <Project>{ffc05694-0434-43cf-b0f2-6c0deae902de}</Project>
-      <Name>TheUltimate.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TheUltimate.Parser\TheUltimate.Interpreter.csproj">
-      <Project>{F0F5A0C6-516B-4FB3-84AA-C906408C8475}</Project>
-      <Name>TheUltimate.Interpreter</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TheUltimate.Services\TheUltimate.Services.csproj">
-      <Project>{11A74EFD-AEC8-4CBA-AB90-A9BBC522D9A9}</Project>
-      <Name>TheUltimate.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TheUltimate\TheUltimate.Web.csproj">
-      <Project>{4C151EFD-AEA8-4DFD-B411-DDA9B3B0D2DF}</Project>
-      <Name>TheUltimate.Web</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

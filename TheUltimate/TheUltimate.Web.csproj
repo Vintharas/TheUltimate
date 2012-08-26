@@ -187,7 +187,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Command.cs" />
+    <Compile Include="Models\CommandViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +316,10 @@
       <Project>{ffc05694-0434-43cf-b0f2-6c0deae902de}</Project>
       <Name>TheUltimate.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TheUltimate.Parser\TheUltimate.Interpreter.csproj">
+      <Project>{f0f5a0c6-516b-4fb3-84aa-c906408c8475}</Project>
+      <Name>TheUltimate.Interpreter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TheUltimate.Services\TheUltimate.Services.csproj">
       <Project>{11a74efd-aec8-4cba-ab90-a9bbc522d9a9}</Project>
       <Name>TheUltimate.Services</Name>
@@ -324,6 +328,9 @@
       <Project>{e6dcb87a-4b98-44fd-a915-2ffd511d89c4}</Project>
       <Name>TheUltimate.Storage</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
