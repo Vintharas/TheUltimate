@@ -1,12 +1,13 @@
-using System.Collections.Generic;
+using System;
+using System.Data.Entity;
 using TheUltimate.Domain.Model;
 
 namespace TheUltimate.Storage
 {
-    public interface IContext
+    public interface IContext : IDisposable
     {
-        IList<Tag> Tags { get; }
-        IList<Task> Tasks { get; }
-        void SaveContext();
+        IDbSet<Tag> Tags { get; set; }
+        IDbSet<Task> Tasks { get; set; }
+        int SaveChanges();
     }
 }

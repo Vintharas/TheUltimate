@@ -27,6 +27,7 @@ namespace TheUltimate.Interpreter.Concretes
             Task task = taskHandler.CreateNewTask();
             task.Name = command.Argument;
             taskHandler.SaveTasks();
+            command.AffectedTask = task;
         }
     }
 }

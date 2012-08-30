@@ -16,13 +16,13 @@
 <table id="tasks-table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Number)
+            @Html.DisplayNameFor(m => m.Number)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(m => m.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(m => m.Description)
         </th>
         <th></th>
     </tr>
@@ -55,7 +55,7 @@
         $(document).ready(function () {
             var updateUi = function(command) {
                 if (command.Verb == "create new task" || command.Verb == "new task") {
-                    $("#tasks-table").append('<tr style="display:none;"><td>4</td><td>' + command.Argument + '</td><td></td></tr>');
+                    $("#tasks-table").append('<tr style="display:none;"><td>' + command.AffectedTask.Number +'</td><td>' + command.AffectedTask.Name + '</td><td></td></tr>');
                     $("#tasks-table").find("tr:last").fadeIn();
                 }
             };

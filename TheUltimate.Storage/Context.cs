@@ -1,27 +1,22 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using TheUltimate.Domain.Model;
 
 namespace TheUltimate.Storage
 {
-    public class Context : IContext
+    public class Context : DbContext, IContext
     {
-        public IList<Tag> Tags { get; private set; }
-        public IList<Task> Tasks { get; private set; }
-        
-        public void SaveContext()
+        public IDbSet<Tag> Tags { get; set; }
+        public IDbSet<Task> Tasks { get; set; }
+
+        static Context()
         {
-            // Save changes XD   
+            InitializeDatabase();
         }
 
-        public Context()
+        static private void InitializeDatabase()
         {
-            Tags = new List<Tag>();
-            Tasks = new List<Task>
-                {
-                    new Task {Number = 1, Name = "Do the Laundry", Description = "Do the Laundry. Remember to use softening!"},
-                    new Task {Number = 2, Name = "Go to the gym"},
-                    new Task {Number = 3, Name = "Buy roses for anniversary"}
-                };
+            Database.SetInitializer(new TheUltimateDropCreateDbAlways());
         }
     }
 }

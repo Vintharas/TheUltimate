@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TheUltimate.Domain.Model;
 using TheUltimate.Services.Interfaces;
 using TheUltimate.Storage;
+using System.Linq;
 
 namespace TheUltimate.Services.Concretes
 {
@@ -16,21 +17,21 @@ namespace TheUltimate.Services.Concretes
 
         public IEnumerable<Task> GetTasks()
         {
-            return context.Tasks;
+            return context.Tasks.ToList();
         }
 
         public Task CreateNewTask()
         {
             //TO DO: need to add identifier to task
             Task task = new Task();
-            task.Number = context.Tasks.Count + 1;
+            task.Number = context.Tasks.Count() + 1;
             context.Tasks.Add(task);
             return task;
         }
 
         public void SaveTasks()
         {
-            context.SaveContext();
+            context.SaveChanges();
         }
 
         public void CompleteTask(Task task)

@@ -22,6 +22,7 @@ namespace TheUltimate.Interpreter.UnitTests.Concretes
         public void Execute_WhenGivenACreateNewTaskCommand_ShouldCreateANewTaskViaTheTaskHandler()
         {
             // Arrange
+            var newTask = new Task();
             var command = new Command
                 {
                     Verb = "create new task",
@@ -30,13 +31,34 @@ namespace TheUltimate.Interpreter.UnitTests.Concretes
                     Response = "created new task!",
                     IsValid = true
                 };
-            taskHandler.Setup(t => t.CreateNewTask()).Returns(new Task());
+            taskHandler.Setup(t => t.CreateNewTask()).Returns(newTask);
             var executer = GetExecuter();
             // Act
             executer.Execute(command);
             // Assert
             taskHandler.Verify(t => t.CreateNewTask());
             taskHandler.Verify(t => t.SaveTasks());
+        }
+
+        [Test]
+        public void Execute_WhenGivenACreateNewTaskCommand_ShouldAddTheAffectedTaskToTheCommand()
+        {
+            // Arrange
+            var newTask = new Task();
+            var command = new Command
+            {
+                Verb = "create new task",
+                Argument = "do the laundry",
+                Line = "create new task do the laundry",
+                Response = "created new task!",
+                IsValid = true
+            };
+            taskHandler.Setup(t => t.CreateNewTask()).Returns(newTask);
+            var executer = GetExecuter();
+            // Act
+            executer.Execute(command);
+            // Assert
+            Assert.AreSame(expected: newTask, actual: command.AffectedTask);
         }
 
         private CommandExecuter GetExecuter()
