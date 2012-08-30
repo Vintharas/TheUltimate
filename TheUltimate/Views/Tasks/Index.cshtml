@@ -55,7 +55,7 @@
         $(document).ready(function () {
             var updateUi = function(command) {
                 if (command.Verb == "create new task" || command.Verb == "new task") {
-                    $("#tasks-table").append('<tr style="display:none;"><td>0</td><td>' + command.Argument + '</td><td></td></tr>');
+                    $("#tasks-table").append('<tr style="display:none;"><td>4</td><td>' + command.Argument + '</td><td></td></tr>');
                     $("#tasks-table").find("tr:last").fadeIn();
                 }
             };

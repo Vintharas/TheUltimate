@@ -119,6 +119,7 @@ namespace TheUltimate.Controllers
         [HttpPost]
         public JsonResult InterpretCommand(CommandViewModel command)
         {
+            // TODO: need to add an extra field to contain arbitrary data -> like a task to display to the user!
             Command resultCommand = interpreter.Interpret(command.Line);
             return Json(resultCommand);
         }

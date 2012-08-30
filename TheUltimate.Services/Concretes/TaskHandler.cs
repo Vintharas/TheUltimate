@@ -23,6 +23,7 @@ namespace TheUltimate.Services.Concretes
         {
             //TO DO: need to add identifier to task
             Task task = new Task();
+            task.Number = context.Tasks.Count + 1;
             context.Tasks.Add(task);
             return task;
         }
