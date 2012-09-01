@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TheUltimate.Domain.Model.Task>
+﻿@using TheUltimate.Domain.Model
+@model IEnumerable<TheUltimate.Domain.Model.Task>
 
 @{
     ViewBag.Title = "Index";
@@ -28,9 +29,12 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr id="task-number-@item.Number" class="@if (item.Status == Status.Completed)
+                                            {
+                                                <text>completed-task</text>
+                                            }">
         <td>
-            @Html.DisplayFor(modelItem => item.Number)
+            #@Html.DisplayFor(modelItem => item.Number)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -55,50 +59,55 @@
         $(document).ready(function () {
             var updateUi = function(command) {
                 if (command.Verb == "create new task" || command.Verb == "new task") {
-                    $("#tasks-table").append('<tr style="display:none;"><td>' + command.AffectedTask.Number +'</td><td>' + command.AffectedTask.Name + '</td><td></td></tr>');
+                    $("#tasks-table").append('<tr style="display:none;"><td>#' + command.AffectedTask.Number +'</td><td>' + command.AffectedTask.Name + '</td><td></td></tr>');
                     $("#tasks-table").find("tr:last").fadeIn();
                 }
+                else if (command.Verb == "complete task" || command.Verb == "complete") {
+                    // find task and add completed class
+                    $("#task-number-" + command.AffectedTask.Number).addClass("completed-task", 1000);
+                }
             };
-          /* First console */
-         var console1 = $('<div class="console1">');
-         $('body').append(console1);
-         var controller1 = console1.console({
-             welcomeMessage: "Welcome Jaime! It's nice to see you",
-           promptLabel: '>> ',
-           commandValidate:function(line){
-               if (line == "") return false;
-               else {
-                   return true;
-               }
-           },
-           commandHandle: function (line, report) {
-               // Parse command, perform required actions and prompt
-               $.ajax({
-                   url: "@Url.Action("InterpretCommand")",
-                       type: "POST",
-                       dataType: "json",
-                       data: JSON.stringify({ Line: line }),
-                       contentType: "application/json; charset=utf-8",
-               }).done(function (command) {
-                    // update UI based on command
-                   updateUi(command);
-                    // show response in console
-                    report([{ msg: command.Response, className: "jquery-console-message-value" }]);
-               });
-           },
-           autofocus:true,
-           animateScroll:true,
-           promptHistory:true,
-           charInsertTrigger:function(keycode,line){
-               return true;
-               // Let you type until you press a-z
-               // Never allow zero.
-               // return !line.match(/[a-z]+/) && keycode != '0'.charCodeAt(0);
-           }
-         });
-      });
+            /* First console */
+            var console1 = $('<div class="console1">');
+            $('body').append(console1);
+            var controller1 = console1.console({
+                welcomeMessage: "Welcome Jaime! It's nice to see you",
+                promptLabel: '>> ',
+                commandValidate:function(line){
+                    if (line == "") return false;
+                    else {
+                        return true;
+                    }
+                },
+                commandHandle: function (line, report) {
+                    // Parse command, perform required actions and prompt
+                    $.ajax({
+                        url: "@Url.Action("InterpretCommand")",
+                        type: "POST",
+                        dataType: "json",
+                        data: JSON.stringify({ Line: line }),
+                        contentType: "application/json; charset=utf-8",
+                    }).done(function (command) {
+                        // update UI based on command
+                        updateUi(command);
+                        // show response in console
+                        report([{ msg: command.Response, className: "jquery-console-message-value" }]);
+                    });
+                },
+                autofocus:true,
+                animateScroll:true,
+                promptHistory:true,
+                charInsertTrigger:function(keycode,line){
+                    return true;
+                    // Let you type until you press a-z
+                    // Never allow zero.
+                    // return !line.match(/[a-z]+/) && keycode != '0'.charCodeAt(0);
+                }
+            });
+        });
       
     </script>
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryconsole")
     @Scripts.Render("~/bundles/jqueryval")
     
