@@ -12,7 +12,9 @@ namespace TheUltimate.Interpreter.Concretes
             Verbs = new List<Verb>
                 {
                     new Verb { Name = "create new task", Response = "new task created!"},
-                    new Verb { Name = "new task", Response = "new task created!"}
+                    new Verb { Name = "new task", Response = "new task created!"},
+                    new Verb { Name = "complete task", Response = "task completed!"},
+                    new Verb { Name = "complete", Response = "task completed!"}
                 };
         }
     }

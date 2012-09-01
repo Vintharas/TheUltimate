@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Globalization;
+using System.Text.RegularExpressions;
 using TheUltimate.Domain.Model;
 using TheUltimate.Services.Interfaces;
 using TheUltimate.Storage;
@@ -34,9 +36,28 @@ namespace TheUltimate.Services.Concretes
             context.SaveChanges();
         }
 
+        public Task FindTask(string keyword)
+        {
+            if (keyword.IsANumber())
+            {
+                int taskNumber;
+                int.TryParse(keyword.Replace("#", ""), out taskNumber);
+                return context.Tasks.Single(t => t.Number == taskNumber);
+            }
+            return context.Tasks.Single(t => t.Name == keyword);
+        }
+
         public void CompleteTask(Task task)
         {
-            throw new System.NotImplementedException();
+            task.Status = Status.Completed;
+        }
+    }
+
+    public static class TaskHandlerHelperExtensions
+    {
+        public static bool IsANumber(this string keyword)
+        {
+            return Regex.IsMatch(keyword, pattern: @"#\d+");  // Anything like #1, #12, #122 matches
         }
     }
 }

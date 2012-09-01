@@ -61,6 +61,28 @@ namespace TheUltimate.Interpreter.UnitTests.Concretes
             Assert.AreSame(expected: newTask, actual: command.AffectedTask);
         }
 
+        [Test]
+        public void Execute_WhenGivenCompleteTaskCommand_ShouldCompleteTheTaskViaTheTaskHandler()
+        {
+            // Arrange
+            var taskToComplete = new Task();
+            var command = new Command
+                {
+                    Verb = "complete task",
+                    Argument = "do the laundry",
+                    Line = "complete task do the laundry",
+                    Response = "task completed!",
+                    IsValid = true
+                };
+            taskHandler.Setup(x => x.FindTask(command.Argument)).Returns(taskToComplete);
+            taskHandler.Setup(x => x.CompleteTask(taskToComplete));
+            // Act
+            GetExecuter().Execute(command);
+            // Assert
+            taskHandler.Verify(x => x.FindTask(command.Argument));
+            taskHandler.Verify(x => x.CompleteTask(taskToComplete));
+        }
+
         private CommandExecuter GetExecuter()
         {
             return new CommandExecuter(taskHandler.Object);

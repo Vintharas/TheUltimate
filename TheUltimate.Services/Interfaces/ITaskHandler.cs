@@ -8,6 +8,7 @@ namespace TheUltimate.Services.Interfaces
         IEnumerable<Task> GetTasks();
         Task CreateNewTask();
         void SaveTasks();
+        Task FindTask(string keyword);
         void CompleteTask(Task task);
     }
 }
