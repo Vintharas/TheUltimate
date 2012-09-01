@@ -17,5 +17,6 @@ namespace TheUltimate.Domain.Model
         [DisplayName("Description")]
         public string Description { get; set; }
         public Tag Tag { get; set; }
+        public Status Status { get; set; }
     }
 }
