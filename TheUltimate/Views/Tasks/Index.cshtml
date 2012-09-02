@@ -2,76 +2,69 @@
 @model IEnumerable<TheUltimate.Domain.Model.Task>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "myTasks";
 }
 
 @section ExtraStyles {
     @Styles.Render("~/Content/themes/base/css/jqueryconsole")
 }
 
-<h2>Tasks</h2>
+@section Title{
+ <h1 id="page-title"><span class="my">my</span>tasks</h1>   
+}
 
 <!--p>
     @Html.ActionLink("Create New", "Create")
 </p-->
-<table id="tasks-table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(m => m.Number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(m => m.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(m => m.Description)
-        </th>
-        <th></th>
-    </tr>
+<ul id="tasks">
 
 @foreach (var item in Model) {
-    <tr id="task-number-@item.Number" class="@if (item.Status == Status.Completed)
+    <li id="task-number-@item.Number" class="@if (item.Status == Status.Completed)
                                             {
                                                 <text>completed-task</text>
                                             }">
-        <td>
+        <span class="task-number">
             #@Html.DisplayFor(modelItem => item.Number)
-        </td>
-        <td>
+        </span>
+        <span class="task-name">
             @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
+        </span>
+        <span class="task-description">
             @Html.DisplayFor(modelItem => item.Description)
-        </td>
+        </span>
         @{/*<td>
           @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
           @Html.ActionLink("Details", "Details", new { id=item.Id }) |
           @Html.ActionLink("Delete", "Delete", new { id=item.Id })
             </td>*/
          }
-    </tr>
+    </li>
 }
 
-</table>
-
+</ul>
+<div class="toolbar">
+    <div class="toolbar-title">SkyNet</div>
+    <div class="avatar"></div>
+</div>
 
 @section Scripts {
     <script type="text/javascript">
         $(document).ready(function () {
             var updateUi = function(command) {
                 if (command.Verb == "create new task" || command.Verb == "new task") {
-                    $("#tasks-table").append('<tr style="display:none;"><td>#' + command.AffectedTask.Number +'</td><td>' + command.AffectedTask.Name + '</td><td></td></tr>');
-                    $("#tasks-table").find("tr:last").fadeIn();
+                    $("#tasks").append('<li style="display:none;"><span class="task-number">#' + command.AffectedTask.Number + '</span><span class="task-name">' + command.AffectedTask.Name + '</span><span class="task-description"></span></li>');
+                    $("#tasks").find("li:last").fadeIn();
                 }
                 else if (command.Verb == "complete task" || command.Verb == "complete") {
                     // find task and add completed class
-                    $("#task-number-" + command.AffectedTask.Number).addClass("completed-task", 1000);
+                    $("#task-number-" + command.AffectedTask.Number).addClass("completed-task");
                 }
             };
             /* First console */
             var console1 = $('<div class="console1">');
-            $('body').append(console1);
+            $('.toolbar').after(console1);
             var controller1 = console1.console({
-                welcomeMessage: "Welcome Jaime! It's nice to see you",
+                welcomeMessage: "Loading personality...[SkyNet]\nWelcome Jaime! It's nice to see you",
                 promptLabel: '>> ',
                 commandValidate:function(line){
                     if (line == "") return false;

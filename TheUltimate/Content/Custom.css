@@ -1,6 +1,84 @@
 ﻿
+/***** Header ******/
 
-tr.completed-task{
+h1#page-title {
+    text-align: center;
+    color: #444;
+    margin-top: 0px;
+}
+
+h1#page-title span.my {
+    color: orange;
+}
+
+/****** Body - tasks *****/
+
+ul#tasks {
+    list-style: none;
+    margin: 1em 0em;
+    padding: 0;
+}
+
+#tasks li {
+    margin: 20px 0;
+    background-color: rgba(255,255,255,.7);
+    border: 1px solid rgba(170,170,170,.5);
+    padding: 5px;
+}
+
+#tasks li.completed-task{
     color: #DCDCDC;
+    background-color: rgba(255,255,255,.4);
     text-decoration: line-through;
+}
+
+#tasks span.task-number {
+    font-family: "Segoe UI", Tahoma, Arial, Helvetica, Sans-Serif;
+    font-size: 1.5em;
+    background-color: rgba(255,176,30 , 0.9);
+    transform: rotate(30deg);
+    border: 1px solid #AAA;
+    display: block;
+    float: left;
+    -ms-transform: rotate(5deg); /* IE 9 */
+    -webkit-transform: rotate(5deg); /* Safari and Chrome */
+    -o-transform: rotate(5deg); /* Opera */
+    -moz-transform: rotate(5deg); /* Firefox */
+    padding: 5px;
+    margin-top: -10px;
+}
+
+#tasks li.completed-task span.task-number {
+    background-color: rgba(170,117,20 , 0.4);
+    border: 1px solid rgba(170,170,170, 0.4);
+}
+
+#tasks span.task-name {
+    padding: 1em;
+}
+
+#tasks span.task-description {
+    font-size: .75em;
+    color: #999;
+}
+
+#tasks li.completed-task span.task-description {
+    color: rgba(153, 153, 153, 0.4);
+}
+
+/***** Footer  *****/
+
+footer .barbarian{
+    font-family: Georgia, sans-serif;
+    color: #ffbc4e;
+}
+
+footer .meets {
+    font-family: Georgia, sans-serif;
+    color: #b1b1cb;
+}
+
+footer .coding {
+    font-family: Georgia, sans-serif;
+    color: #48caff;
 }

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>@ViewBag.Title - The Ultimate Personal Task Management System</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
@@ -13,9 +13,12 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                    <p class="site-title">@Html.ActionLink("TheUltimate", "Index", "Home") <small>personal task management system</small></p>
                 </div>
                 <div class="float-right">
+                    @RenderSection("Title", required: false)
+                </div>
+@*                <div class="float-right">
                     <section id="login">
                         @Html.Partial("_LoginPartial")
                     </section>
@@ -26,7 +29,7 @@
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
                     </nav>
-                </div>
+                </div>*@
             </div>
         </header>
         <div id="body">
@@ -38,7 +41,7 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                    <p>&copy; @DateTime.Now.Year - <span class="barbarian">Barbarian</span><span class="meets">Meets</span><span class="coding">Coding</span> <a href="http://www.barbarianmeetscoding.com">http://www.barbarianmeetscoding.com</a></p>
                 </div>
             </div>
         </footer>
