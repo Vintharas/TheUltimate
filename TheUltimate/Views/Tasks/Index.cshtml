@@ -52,7 +52,7 @@
         $(document).ready(function () {
             var updateUi = function(command) {
                 if (command.Verb == "create new task" || command.Verb == "new task") {
-                    $("#tasks").append('<li style="display:none;"><span class="task-number">#' + command.AffectedTask.Number + '</span><span class="task-name">' + command.AffectedTask.Name + '</span><span class="task-description"></span></li>');
+                    $("#tasks").append('<li id="task-number-' + command.AffectedTask.Number + '" style="display:none;"><span class="task-number">#' + command.AffectedTask.Number + '</span><span class="task-name">' + command.AffectedTask.Name + '</span><span class="task-description"></span></li>');
                     $("#tasks").find("li:last").fadeIn();
                 }
                 else if (command.Verb == "complete task" || command.Verb == "complete") {

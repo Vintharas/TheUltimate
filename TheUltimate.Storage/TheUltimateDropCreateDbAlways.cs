@@ -12,24 +12,18 @@ namespace TheUltimate.Storage
                 {
                     Number = 1,
                     Name = "Do the Laundry",
-                    Description = "Bleh..."
+                    Description = "Do the Laundry. Remember to use softening!"
                 });
             context.Tasks.Add(new Task
                 {
                     Number = 2,
-                    Name = "Remember to buy batteries",
+                    Name = "Go to the Gym",
                     Description = ""
                 });
             context.Tasks.Add(new Task
                 {
                     Number = 3,
-                    Name = "Call the Dentist",
-                    Description = "..."
-                });
-            context.Tasks.Add(new Task
-                {
-                    Number = 4,
-                    Name = "Go to Mars",
+                    Name = "Buy roses for anniversary",
                     Description = "..."
                 });
 

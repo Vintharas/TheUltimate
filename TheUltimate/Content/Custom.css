@@ -41,7 +41,7 @@ ul#tasks {
     display: block;
     float: left;
     -ms-transform: rotate(5deg); /* IE 9 */
-    -webkit-transform: rotate(5deg); /* Safari and Chrome */
+    -webkit-transform: rotate(-5deg); /* Safari and Chrome */
     -o-transform: rotate(5deg); /* Opera */
     -moz-transform: rotate(5deg); /* Firefox */
     padding: 5px;
